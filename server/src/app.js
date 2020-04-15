@@ -27,7 +27,7 @@ app.use(session({
   resave: false,
   cookie: { maxAge: 180 * 60 * 1000, secure: true }
 }));
-app.use(cors());
+// app.use(cors());
 app.use(ValidatorController);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));

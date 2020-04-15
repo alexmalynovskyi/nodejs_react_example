@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon /dist/server.js",
     "build": "mkdir dist && babel src -s -d dist",
     "dev": "nodemon --exec babel-node src/server.js",
@@ -13,10 +12,10 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm link"
+      "pre-commit": "npm lint"
     }
   },
-  "author": "",
+  "author": "smalinovsky611@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
