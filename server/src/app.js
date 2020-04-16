@@ -1,5 +1,4 @@
 import express from 'express';
-import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import session from 'express-session';
@@ -27,10 +26,13 @@ app.use(session({
   resave: false,
   cookie: { maxAge: 180 * 60 * 1000, secure: true }
 }));
-// app.use(cors());
+app.use(cors());
 app.use(ValidatorController);
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+if(process.env.ENV === 'dev') {
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+}
+
 
 fs.readdirSync(`${__dirname}/routes`).map( (file) => {
   if(file === 'index.js') {
